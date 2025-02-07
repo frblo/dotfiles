@@ -97,6 +97,10 @@ button:hover {
     margin-right: 0;
 }
 
+#custom-notification {
+  font-family: "NotoSansMono Nerd Font";
+}
+
 #clock {
     background-color: #5b534d;
 }

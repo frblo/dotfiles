@@ -17,6 +17,7 @@
         "disk",
         "battery",
         "clock",
+        "custom/notification",
         "tray",
     ],
     // Modules configuration
@@ -117,12 +118,12 @@
         "format-icons": ["", "", "", "", ""]
     },
     "network": {
-        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-wifi": " {essid} ({signalStrength}%) {ipaddr}",
         "format-ethernet": " {ipaddr}/{cidr}",
         "tooltip-format": " {ifname} via {gwaddr}",
         "format-linked": " {ifname} (No IP)",
         "format-disconnected": "⚠ Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
     },
     "pulseaudio": {
         "format": "{icon} {volume}% {format_source}",
@@ -141,6 +142,26 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": " {} {icon} ",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
     },
     "custom/media": {
         "format": "{icon} {}",
