@@ -164,6 +164,26 @@ input * {
     # Move focus to the parent container
     bindsym $mod+a focus parent
 #
+# Colors:
+#
+    set $bg_dim #1b1b1b
+    set $bg0 #282828
+    set $bg1 #32302f
+    set $bg5 #5a525c
+    set $bg_statusline3 #504945
+    set $green #a9b665
+    set $bg_diff_green #34381b
+    set $red #ea6962
+    set $bg_diff_red #402120
+    set $fg1 #ddc7a1
+
+    # client.<class> <border> <background> <text> [<indicator> [<child_border>]]
+    client.focused $bg_diff_green $bg_diff_green $fg1 $green $bg_diff_green
+    client.focused_tab_title $bg_diff_green $bg_diff_green $fg1 $green $bg_diff_green
+    client.focused_inactive $bg1 $bg1 $fg1 $bg_statusline3 $bg1
+    client.unfocused $bg0 $bg0 $bg5 $bg_statusline3 $bg0
+    client.urgent $bg_diff_red $bg_diff_red $fg1 $red $bg_diff_red
+#
 # Scratchpad:
 #
     # Sway has a "scratchpad", which is a bag of holding for windows.
@@ -212,6 +232,7 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
     bindsym Print exec grim
+    xwayland enable
 
 #
 # Notification center
