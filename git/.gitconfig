@@ -1,0 +1,9 @@
+[user]
+	email = scanmar333@gmail.com
+	name = Fredrik Blomqvist
+[pull]
+	rebase = false
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main
