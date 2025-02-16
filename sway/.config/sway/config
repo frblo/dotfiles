@@ -14,12 +14,14 @@ set $term alacritty
 # Your preferred application launcher
 set $menu wmenu-run
 
+set $background_image /usr/share/backgrounds/gruvbox/gruvbox_landscape.png
+
 # Lock screen
-set $lock 'swaylock -f -i /usr/share/backgrounds/windows/windows.jpg'
+set $lock 'swaylock -f -i $background_image'
 
 ### Output configuration
 #
-output * bg /usr/share/backgrounds/windows/windows.jpg fill
+output * bg $background_image fill
 #
 # Example configuration:
 #
