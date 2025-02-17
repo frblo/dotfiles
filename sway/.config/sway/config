@@ -90,6 +90,7 @@ input * {
 
     # Lock screen
     bindsym $mod+Shift+x exec $lock
+#
 # Moving around:
 #
     # Move your focus around
@@ -165,6 +166,33 @@ input * {
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+#
+# Music player
+#
+    # Play pause
+    bindsym $mod+KP_5 exec playerctl play-pause
+    bindsym $mod+KP_Begin exec playerctl play-pause
+
+    # Next song
+    bindsym $mod+KP_6 exec playerctl next
+    bindsym $mod+KP_Right exec playerctl next
+
+    # Previous song
+    bindsym $mod+KP_4 exec playerctl previous
+    bindsym $mod+KP_Left exec playerctl previous
+
+    # Volume up
+    bindsym $mod+KP_8 exec playerctl volume 0.05+
+    bindsym $mod+KP_Up exec playerctl volume 0.05+
+
+    # Volume down
+    bindsym $mod+KP_2 exec playerctl volume 0.05-
+    bindsym $mod+KP_Down exec playerctl volume 0.05-
+#
+# Brightness
+#
+    bindsym XF86MonBrightnessUp exec light -A 3
+    bindsym XF86MonBrightnessDown exec light -U 3
 #
 # Colors:
 #
