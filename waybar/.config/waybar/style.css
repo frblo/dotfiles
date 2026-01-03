@@ -1,5 +1,5 @@
 * {
-    font-family: 'Noto Sans Mono', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
+    font-family: 'Noto Sans Mono', 'Font Awesome 7 Free', 'Font Awesome 7 Brands', monospace;
     font-size: 13px;
 }
 
@@ -72,6 +72,7 @@ button:hover {
 #backlight,
 #network,
 #pulseaudio,
+#wireplumber,
 #custom-media,
 #tray,
 #mode,
@@ -164,12 +165,13 @@ label:focus {
 }
 
 #wireplumber {
-    background-color: #fff0f5;
-    color: #000000;
+    background-color: #e78a4e;
+    color: #ffffff;
 }
 
 #wireplumber.muted {
-    background-color: #f53c3c;
+    background-color: #7c6f64;
+    color: #a89984;
 }
 
 #custom-media {
