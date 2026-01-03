@@ -14,11 +14,37 @@ set $term alacritty
 # Your preferred application launcher
 set $menu wmenu-run
 
-set $background_image /usr/share/backgrounds/gruvbox/gruvbox_landscape.png
+#
+# Background images
+#
+    set $background_image /usr/share/backgrounds/gruvbox/gruvbox_landscape.png
+    set $background_image_lock /usr/share/backgrounds/gruvbox/gruvbox_landscape_lock.png
+#
+# Colors:
+#
+    set $bg_dim 1b1b1b
+    set $bg0 282828
+    set $bg1 32302f
+    set $bg5 5a525c
+    set $bg_statusline3 504945
+    set $green a9b665
+    set $bg_diff_green 34381b
+    set $red ea6962
+    set $bg_diff_red 402120
+    set $fg1 ddc7a1
 
+    # client.<class> <border> <background> <text> [<indicator> [<child_border>]]
+    client.focused $bg_diff_green $bg_diff_green $fg1 $green $bg_diff_green
+    client.focused_tab_title $bg_diff_green $bg_diff_green $fg1 $green $bg_diff_green
+    client.focused_inactive $bg1 $bg1 $fg1 $bg_statusline3 $bg1
+    client.unfocused $bg0 $bg0 $bg5 $bg_statusline3 $bg0
+    client.urgent $bg_diff_red $bg_diff_red $fg1 $red $bg_diff_red
+#
 # Lock screen
-set $lock 'swaylock -f -i $background_image'
-
+#
+    set $lock 'swaylock -f --ring-wrong-color $red --inside-wrong-color $red -i $background_image_lock'
+    bindswitch --reload --locked lid:on exec $lock
+#
 ### Output configuration
 #
 output * bg $background_image fill
@@ -37,12 +63,6 @@ output * bg $background_image fill
 #          timeout 300 'swaylock -f -c 000000' \
 #          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
 #          before-sleep 'swaylock -f -c 000000'
-
-bindswitch --reload --locked lid:on exec $lock
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
 #
@@ -194,26 +214,6 @@ input * {
     bindsym XF86MonBrightnessUp exec light -A 3
     bindsym XF86MonBrightnessDown exec light -U 3
 #
-# Colors:
-#
-    set $bg_dim #1b1b1b
-    set $bg0 #282828
-    set $bg1 #32302f
-    set $bg5 #5a525c
-    set $bg_statusline3 #504945
-    set $green #a9b665
-    set $bg_diff_green #34381b
-    set $red #ea6962
-    set $bg_diff_red #402120
-    set $fg1 #ddc7a1
-
-    # client.<class> <border> <background> <text> [<indicator> [<child_border>]]
-    client.focused $bg_diff_green $bg_diff_green $fg1 $green $bg_diff_green
-    client.focused_tab_title $bg_diff_green $bg_diff_green $fg1 $green $bg_diff_green
-    client.focused_inactive $bg1 $bg1 $fg1 $bg_statusline3 $bg1
-    client.unfocused $bg0 $bg0 $bg5 $bg_statusline3 $bg0
-    client.urgent $bg_diff_red $bg_diff_red $fg1 $red $bg_diff_red
-#
 # Scratchpad:
 #
     # Sway has a "scratchpad", which is a bag of holding for windows.
@@ -261,7 +261,7 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Screenshot
-    bindsym Print exec slurp | grim -g - - | wl-copy
+    bindsym $mod+Print exec slurp | grim -g - - | wl-copy
 
     xwayland enable
 
@@ -282,24 +282,8 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
+    # Let waybar do all the work
     swaybar_command waybar
-    # position bottom
-
-    # # When the status_command prints a new line to stdout, swaybar updates.
-    # # The default just shows the current date and time.
-    # status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-
-    # status_command SCRIPT_DIR=~/Programs/i3-blocklets i3blocks
-
-    # font pango: Hack Nerd Font, FontAwesome 10
-    #
-    # status_command /usr/bin/i3status-rs ~/.config/i3status-rs/config.toml
-
-    # colors {
-    #     statusline #ffffff
-    #     background #323232
-    #     inactive_workspace #32323200 #32323200 #5c5c5c
-    # }
 }
 
 include /etc/sway/config.d/*
