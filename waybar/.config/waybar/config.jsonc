@@ -118,7 +118,7 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "wireplumber": {
-        "format": "{icon} {volume}% {format_source}",
+        "format": "{icon} {volume}% {node_name} {format_source}",
         "format-muted": " {format_source}",
         "format-source": "󰍬",
         "format-source-muted": "󰍭",
