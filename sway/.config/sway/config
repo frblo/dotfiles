@@ -276,6 +276,7 @@ bindsym $mod+r mode "resize"
 # Exec on startup
 #
     exec blueman-applet
+    exec nm-applet
 
 #
 # Status Bar:
