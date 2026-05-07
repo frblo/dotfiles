@@ -19,6 +19,8 @@ return {
 			"svelte",
 			"typescript",
 			"javascript",
+			"python",
+			"go",
 		}
 		require("nvim-treesitter").setup()
 
